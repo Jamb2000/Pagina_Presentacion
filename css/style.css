@@ -337,6 +337,16 @@ nav {
     font-weight: 600;
 }
 
+.info-row a {
+    color: var(--text-main);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.info-row a:hover {
+    color: var(--accent-color);
+}
+
 .resume-image {
     flex: 0 0 400px;
     display: flex;
@@ -407,6 +417,7 @@ nav {
         grid-template-columns: 1fr;
     }
 }
+
 /* =========================================
    5. PROYECTOS (CON IMÁGENES)
    ========================================= */
