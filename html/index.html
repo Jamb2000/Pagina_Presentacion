@@ -1,57 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Presentation</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Portafolio | Jose Antonio Medina</title>
 </head>
-<body>
+
+<body id="inicio">
     <header>
         <nav>
-            <div class="logo"><h1 class="title">Bienvenidos a mi Pagina de Presentacion</h1> </div>
+            <div class="logo">
+                <h1 class="title">Portafolio</h1>
+            </div>
             <ul class="nav-links">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Sobre Mi</a></li>
-                <li><a href="#">Proyectos</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+            </ul>
         </nav>
     </header>
     <main>
 
-        <section class="hero">
-            <h2>Hola, Soy Jose Antonio</h2>
-            <p>Desarrollador Web | Diseñador Gráfico | Apasionado por la Tecnología</p>
-            <a href="#" class="btn">Conoce Más</a>
+        <section class="hero" id="inicio">
+            <div class="hero-content oculto">
+                <h2>Hola, Soy <span class="highlight">Jose Antonio Medina</span></h2>
+                <p class="subtitle">Desarrollador Web | Diseñador Gráfico</p>
+                <p class="description">Transformando ideas complejas en soluciones digitales eficientes, escalables y
+                    visualmente impactantes.</p>
+            </div>
+
+            <div class="profile-card oculto">
+                <div class="card-image-wrapper">
+                    <div class="glow-effect"></div>
+                    <img src="../img/Perfil.png" alt="Foto de Jose Antonio Medina" class="foto_vcard">
+                </div>
+                <div class="card-info">
+                    <h3 class="card-name">JOSE ANTONIO</h3>
+                    <p class="card-role">JavaScript & C# Developer</p>
+                    <div class="card-contact">
+                        <p>tu_correo@demo.com</p>
+                        <p>+51 999 888 777</p>
+                    </div>
+                    <div class="card-socials">
+                        <a href="#" class="social-icon">In</a>
+                        <a href="#" class="social-icon">Gh</a>
+                        <a href="https://twitch.tv/jamb_1" class="social-icon" target="_blank">Tw</a>
+                    </div>
+                    <div class="card-buttons">
+                        <a href="#sobre-mi" class="btn-hire">¡Contrátame!</a>
+                        <a href="#" class="btn-cv">Descargar CV</a>
+                    </div>
+                </div>
+            </div>
         </section>
 
+        <section class="about-resume oculto" id="sobre-mi">
+    <div class="resume-header">
+        <span class="sub-heading">WHO I AM</span>
+        <h2>About My Resume</h2>
+    </div>
 
-        <section class="about">
-            <h2>Sobre Mi</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </section>
+    <div class="resume-main">
+        <div class="resume-info">
+            <div class="info-row"><span>Age:</span> 29</div>
+            <div class="info-row"><span>Residence:</span> Peru</div>
+            <div class="info-row"><span>Address:</span> Cusco, Peru</div>
+            <div class="info-row"><span>E-mail:</span> tu_correo@demo.com</div>
+            <div class="info-row"><span>Phone:</span> +51 999 888 777</div>
+            <div class="info-row"><span>Freelance:</span> Available</div>
+        </div>
 
-        
-        <section class="projects">
-            <h2>Proyectos</h2>
+        <div class="resume-image">
+            <img src="../img/1780015773466.png" alt="Jose Antonio Medina">
+        </div>
+    </div>
+
+    <div class="skills-grid">
+        <div class="skill-card"><h3>50%</h3><p>Graphic Design</p></div>
+        <div class="skill-card"><h3>75%</h3><p>Development</p></div>
+        <div class="skill-card"><h3>38%</h3><p>Marketing Ideas</p></div>
+        <div class="skill-card"><h3>63%</h3><p>Web Management</p></div>
+    </div>
+</section>
+
+        <section class="projects" id="proyectos">
+            <h2 class="oculto">Proyectos Destacados</h2>
             <div class="project-list">
-                <div class="project-item">
-                    <h3>Proyecto 1</h3>
-                    <p>Descripción del proyecto 1.</p>
+                <div class="project-item oculto">
+                    <img src="../img/proyecto1.jpg" alt="Proyecto 1" class="project-img">
+                    <h3>Sistema de Gestión</h3>
+                    <p>Desarrollo en ASP.NET Core.</p>
+                    <a href="../proyecto1.html" class="btn_proyectos">Ver Detalles</a>
                 </div>
-                <div class="project-item">
-                    <h3>Proyecto 2</h3>
-                    <p>Descripción del proyecto 2.</p>
+                <div class="project-item oculto">
+                    <img src="../img/proyecto2.jpg" alt="Proyecto 2" class="project-img">
+                    <h3>Interfaz Interactiva</h3>
+                    <p>Diseño front-end con React.</p>
+                    <a href="../proyecto2.html" class="btn_proyectos">Ver Detalles</a>
                 </div>
-                <div class="project-item">
-                    <h3>Proyecto 3</h3>
-                    <p>Descripción del proyecto 3.</p>
+                <div class="project-item oculto">
+                    <img src="../img/proyecto3.jpg" alt="Proyecto 3" class="project-img">
+                    <h3>Identidad de Marca</h3>
+                    <p>Branding y diseño visual.</p>
+                    <a href="../proyecto3.html" class="btn_proyectos">Ver Detalles</a>
                 </div>
             </div>
         </section>
 
     </main>
-
-    
+    <script src="../js/script.js"></script>
 </body>
+
 </html>
