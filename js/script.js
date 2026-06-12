@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Función para simular una consulta a una base de datos o API
     function pedirDatosProyectos() {
         return new Promise((resolver) => {
-            // Simulamos que el internet tarda 3 segundos (3000 ms) en traernos la info
+            // Simulamos que el internet tarda 1 segundo (1000 ms) en traernos la info
             setTimeout(() => {
                 const misProyectos = [
                     {
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 ];
                 resolver(misProyectos);
-            }, 3000); 
+            }, 1000); 
         });
     }
 
@@ -94,21 +94,27 @@ document.addEventListener('DOMContentLoaded', () => {
         // Recorremos la lista de proyectos para armar el HTML de cada tarjeta real
         proyectos.forEach(proyecto => {
             const tarjetaReal = `
-                <div class="bg-slate-800 rounded-[15px] overflow-hidden shadow-[0_6px_15px_rgba(0,0,0,0.3)] text-left flex flex-col oculto ${proyecto.retraso} transition-all duration-300 hover:-translate-y-[10px] hover:shadow-[0_15px_30px_rgba(0,0,0,0.5)]">
-                    <div class="w-full h-[200px] bg-slate-700 animate-pulse border-b-[3px] border-sky-400 relative">
+                <div class="oculto ${proyecto.retraso} h-full">
+                    
+                    <div class="bg-slate-800 rounded-[15px] overflow-hidden shadow-[0_6px_15px_rgba(0,0,0,0.3)] text-left flex flex-col h-full transition-all duration-[800ms] hover:-translate-y-[20px] hover:shadow-[0_15px_30px_rgba(0,0,0,0.5)]">
                         
-                    <img src="${proyecto.img}" 
-                             alt="${proyecto.titulo}" 
-                             class="w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-500"
-                             onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse');"
-                             onerror="this.style.display='none'">
+                        <div class="w-full h-[200px] bg-slate-700 animate-pulse border-b-[3px] border-sky-400 relative">
+                            <img src="${proyecto.img}" 
+                                 alt="${proyecto.titulo}" 
+                                 class="w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity duration-500"
+                                 onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse');"
+                                 onerror="this.style.display='none'">
+                        </div>
+                        
+                        <h3 class="text-slate-50 mx-5 mt-5 mb-[10px] text-[1.4rem] font-bold">${proyecto.titulo}</h3>
+                        <p class="text-slate-400 mx-5 mb-2">${proyecto.herramienta}</p>
+                        <p class="text-slate-400 mx-5 mb-5 grow">${proyecto.desc}</p>                    
+                        
+                        <a href="${proyecto.link}" target="_blank" rel="noopener noreferrer" class="mx-5 mb-5 self-center inline-block bg-transparent text-sky-400 border-2 border-sky-400 px-5 py-2 rounded-md no-underline font-semibold text-[0.9rem] transition-all duration-300 hover:bg-sky-400 hover:text-slate-900 hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(56,189,248,0.3)]">
+                            Ver Proyecto
+                        </a>
+                        
                     </div>
-                    <h3 class="text-slate-50 mx-5 mt-5 mb-[10px] text-[1.4rem] font-bold">${proyecto.titulo}</h3>
-                    <p class="text-slate-400 mx-5 mb-2">${proyecto.herramienta}</p>
-                    <p class="text-slate-400 mx-5 mb-5 grow">${proyecto.desc}</p>                    
-                    <a href="${proyecto.link}" target="_blank" rel="noopener noreferrer" class="mx-5 mb-5 self-center inline-block bg-transparent text-sky-400 border-2 border-sky-400 px-5 py-2 rounded-md no-underline font-semibold text-[0.9rem] transition-all duration-300 hover:bg-sky-400 hover:text-slate-900 hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(56,189,248,0.3)]">
-                        Ver Proyecto
-                    </a>
                 </div>
             `;
             // Inyectamos la tarjeta en el HTML
@@ -150,30 +156,58 @@ document.querySelectorAll('a').forEach(enlace => {
 // LÓGICA DEL FORMULARIO DE CONTACTO (Simulación de envío)
 // =======================================================
 
-//const formulario = document.getElementById('formulario-contacto');
+const formulario = document.getElementById('formulario-contacto');
 
 if (formulario) {
     formulario.addEventListener('submit', function(e) {
-        // Evitamos que la página se actualice al darle "Enviar"
+        // 1. Esta línea es clave: detiene el comportamiento por defecto (que es mandarte a la página de Formspree)
         e.preventDefault(); 
-        
-        // Agarramos el botón para hacerle el efecto de éxito
         const boton = this.querySelector('button[type="submit"]');
         const textoOriginal = boton.innerText;
         
-        // Cambiamos el estilo a verde de éxito
-        boton.innerText = '¡Mensaje Enviado!';
-        boton.classList.add('bg-green-500', 'text-white', 'hover:bg-green-600');
-        boton.classList.remove('bg-sky-400', 'text-slate-900', 'hover:bg-sky-500');
+        // Damos un pequeño aviso visual de que está procesando
+        boton.innerText = 'Enviando...';
         
-        // Limpiamos todo lo que el usuario escribió
-        this.reset();
-        
-        // A los 3 segundos (3000ms), regresamos el botón a su estado normal azul
-        setTimeout(() => {
-            boton.innerText = textoOriginal;
-            boton.classList.remove('bg-green-500', 'text-white', 'hover:bg-green-600');
-            boton.classList.add('bg-sky-400', 'text-slate-900', 'hover:bg-sky-500');
-        }, 3000);
+        // 2. Empaquetamos todos los datos (nombre, correo, mensaje) que el usuario escribió
+        const datos = new FormData(this);
+
+        // 3. Enviamos los datos a Formspree usando fetch (en segundo plano)
+        fetch(this.action, {
+            method: this.method,
+            body: datos,
+            headers: {
+                'Accept': 'application/json' // Le pedimos a Formspree que nos responda en código, no con una página web
+            }
+        })
+        .then(respuesta => {
+            if (respuesta.ok) {
+                // ¡Éxito! Formspree recibió el correo
+                boton.innerText = '¡Mensaje Enviado!';
+                boton.classList.remove('bg-sky-400', 'text-slate-900', 'hover:bg-sky-500');
+                boton.classList.add('bg-green-500', 'text-white', 'hover:bg-green-600');
+                
+                // Limpiamos los campos de texto
+                this.reset(); 
+            } else {
+                // Formspree devolvió un error (ej. se cayó el servidor)
+                boton.innerText = 'Error al enviar';
+                boton.classList.remove('bg-sky-400', 'text-slate-900');
+                boton.classList.add('bg-red-500', 'text-white');
+            }
+        })
+        .catch(error => {
+            // Error local (ej. el cliente se quedó sin internet)
+            boton.innerText = 'Error de conexión';
+            boton.classList.remove('bg-sky-400', 'text-slate-900');
+            boton.classList.add('bg-red-500', 'text-white');
+        })
+        .finally(() => {
+            // 4. Pase lo que pase (éxito o error), a los 3 segundos devolvemos el botón a la normalidad
+            setTimeout(() => {
+                boton.innerText = textoOriginal;
+                boton.classList.remove('bg-green-500', 'bg-red-500', 'text-white', 'hover:bg-green-600');
+                boton.classList.add('bg-sky-400', 'text-slate-900', 'hover:bg-sky-500');
+            }, 3000);
+        });
     });
 }
