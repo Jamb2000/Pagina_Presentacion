@@ -1,27 +1,22 @@
 <!DOCTYPE html>
-<!-- Buena práctica: Especificar el idioma del documento para accesibilidad y SEO -->
-<!-- 'scroll-smooth' hace que el desplazamiento a los enlaces ancla (#) sea suave -->
 <html lang="es" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
-    <!-- Meta tag esencial para diseño responsivo en dispositivos móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Script de Tailwind por CDN (Excelente para prototipado rápido o proyectos pequeños sin Node.js) -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <title>Portafolio | Jose Antonio Medina</title>
 
-    <!-- Buena práctica: Mantener clases muy complejas o animaciones clave (keyframes) 
-         en CSS tradicional para no ensuciar el HTML con "clases arbitrarias" excesivamente largas de Tailwind -->
     <style>
+        /* Difuminado para la parte de abajo de tu foto de perfil */
         .mask-image-custom {
             -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
             mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
         }
 
-        /* Clases controladas por tu JavaScript (js/script.js) para la animación al hacer scroll */
+        /* Clases base para la animación de aparición (controladas por JS) */
         .oculto {
             opacity: 0;
             transform: translateY(60px);
@@ -60,28 +55,11 @@
     </style>
 </head>
 
-<!-- Estilos base del Body: 
-     bg-slate-900: Fondo oscuro principal (#0f172a)
-     text-slate-50: Texto principal claro (#f8fafc)
-     font-sans: Fuente por defecto (Segoe UI/Roboto)
-     leading-relaxed: Espaciado entre líneas (line-height) para mejor lectura
--->
-
 <body id="inicio"
     class="bg-slate-900 text-slate-50 font-sans leading-relaxed animate-[aparecerPagina_1s_ease-out_forwards]">
 
-    <!-- HEADER: 
-         sticky top-0: Mantiene el menú en la parte superior al hacer scroll
-         z-50: Asegura que el menú esté por encima del resto del contenido
-         backdrop-blur-md: Crea un efecto de vidrio esmerilado (glassmorphism) combinando con bg-slate-900/95 (95% opacidad)
-    -->
     <header
         class="bg-slate-900/95 backdrop-blur-md sticky top-0 z-50 border-b border-sky-400/20 shadow-[0_4px_25px_rgba(0,0,0,0.5)] py-2.5">
-
-        <!-- NAV: Contenedor principal de navegación
-             flex flex-col lg:flex-row: En móviles es columna, en pantallas grandes (lg:) es fila
-             max-w-[1400px] mx-auto: Limita el ancho máximo y lo centra en la pantalla
-        -->
         <nav
             class="flex flex-col lg:flex-row justify-between items-center max-w-[1400px] mx-auto px-5 lg:px-10 gap-5 lg:gap-0">
             <div class="logo">
@@ -89,7 +67,6 @@
             </div>
 
             <ul class="flex flex-wrap justify-center gap-5 lg:gap-10 list-none w-full lg:w-auto">
-                <!-- Enlaces con efecto hover avanzado usando pseudoelementos (after:) en Tailwind -->
                 <li><a href="#inicio"
                         class="relative text-slate-50 font-semibold text-[1.15rem] transition-colors duration-300 hover:text-sky-400 after:content-[''] after:absolute after:w-0 after:h-[3px] after:-bottom-1.5 after:left-0 after:bg-sky-400 after:transition-[width] after:duration-300 hover:after:w-full rounded-[2px]">Inicio</a>
                 </li>
@@ -104,18 +81,14 @@
     </header>
 
     <main>
-        <!-- SECCIÓN INICIO (HERO): 
-             min-h-[calc(100vh-90px)]: Ocupa el alto total de la pantalla menos el alto aproximado del header
-        -->
         <section
             class="flex flex-col lg:flex-row items-center justify-between max-w-[1400px] mx-auto min-h-[calc(100vh-90px)] px-5 lg:px-10 py-10 lg:py-5 gap-12 mt-5 lg:mt-0"
             id="inicio">
 
             <div
                 class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,rgba(56,189,248,0.2)_0%,rgba(15,23,42,0)_70%)] pointer-events-none">
-                <h2 class="sr-only">Sección de Inicio</h2>
             </div>
-            <!-- Contenido de texto izquierdo (flex-1 para que tome el espacio sobrante) -->
+
             <div class="flex-1 text-center lg:text-left oculto">
                 <h2 class="text-5xl lg:text-6xl leading-tight mb-5 font-bold">Hola, Soy <span
                         class="text-sky-400 drop-shadow-[0_0_20px_rgba(56,189,248,0.4)]">Jose Antonio Medina</span></h2>
@@ -124,17 +97,14 @@
                     complejas en soluciones digitales eficientes, escalables y visualmente impactantes.</p>
             </div>
 
-            <!-- Tarjeta de Perfil Derecha (flex-none para mantener su tamaño fijo, max-w-[360px]) -->
             <div
                 class="flex-none w-full max-w-[360px] bg-slate-800 py-[30px] px-[25px] rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] border border-sky-400/15 flex flex-col items-center text-center oculto">
 
-                <!-- Contenedor de la imagen con máscara difuminada inferior -->
                 <div class="w-full flex justify-center relative mb-2.5 mask-image-custom">
-                    <!-- Efecto de resplandor (Glow) detrás de la imagen usando bg-[radial-gradient(...)] -->
                     <div
                         class="absolute w-[220px] h-[220px] bg-[radial-gradient(circle,rgba(56,189,248,0.3)_0%,rgba(15,23,42,0)_70%)] rounded-full z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     </div>
-                    <img src="img/perfil.png" alt="Foto de Jose Antonio Medina"
+                    <img src="img/perfil.png" alt="Foto de Jose Antonio"
                         class="w-[210px] h-auto object-contain z-10 drop-shadow-[0_15px_15px_rgba(0,0,0,0.6)] animate-[flotar_4s_ease-in-out_infinite]">
                 </div>
 
@@ -146,7 +116,6 @@
                         <p>+51 991 604 801</p>
                     </div>
 
-                    <!-- Redes sociales: Uso de gap-3 para separar elementos, hover:-translate-y-1 para el efecto de salto -->
                     <div class="flex gap-3 mb-5">
                         <a href="#"
                             class="flex justify-center items-center w-10 h-10 bg-slate-900/80 text-slate-400 rounded-xl no-underline font-bold transition-all duration-300 hover:bg-sky-400 hover:text-slate-900 hover:-translate-y-1">In</a>
@@ -157,7 +126,6 @@
                             target="_blank">Tw</a>
                     </div>
 
-                    <!-- Botones principales -->
                     <div class="flex flex-col gap-2.5 w-full">
                         <a href="#sobre-mi"
                             class="bg-sky-400 text-slate-900 py-2.5 rounded-full font-bold text-base transition-all duration-300 hover:bg-sky-600 hover:text-white hover:-translate-y-0.5 hover:shadow-[0_5px_15px_rgba(56,189,248,0.4)]">¡Contrátame!</a>
@@ -169,20 +137,15 @@
             </div>
         </section>
 
-        <!-- SECCIÓN SOBRE MÍ -->
         <section class="max-w-[1100px] mx-auto px-5 py-20 min-h-screen box-border oculto" id="sobre-mi">
             <div class="text-center mb-[60px]">
                 <span class="text-sky-400 tracking-[4px] text-[0.9rem] font-bold uppercase">QUIEN SOY</span>
                 <h2 class="text-[2.2rem] md:text-[3rem] text-slate-50 mt-2.5 font-bold">Resumen Sobre Mi</h2>
             </div>
 
-            <!-- Contenedor principal de la bio: flex-col-reverse en móviles (imagen arriba, texto abajo) y flex-row en escritorio (md:) -->
             <div
                 class="flex flex-col-reverse md:flex-row justify-between items-center gap-10 md:gap-[60px] mb-[60px] w-full">
-
-                <!-- Lista de datos personales -->
                 <div class="flex-1 w-full">
-                    <!-- shrink-0 evita que el título ("Edad:", "País:") se encoja si el texto de la derecha es muy largo -->
                     <div class="bg-slate-800 py-5 px-[25px] rounded-xl mb-[15px] flex text-slate-50 text-[1.1rem]">
                         <span class="text-slate-400 w-[140px] font-semibold shrink-0">Edad:</span> 26
                     </div>
@@ -192,11 +155,10 @@
                     <div class="bg-slate-800 py-5 px-[25px] rounded-xl mb-[15px] flex text-slate-50 text-[1.1rem]">
                         <span class="text-slate-400 w-[140px] font-semibold shrink-0">Dirección:</span> Cusco, Peru
                     </div>
-                    <!-- break-all permite que el correo electrónico baje a la siguiente línea en móviles si es muy largo -->
                     <div
                         class="bg-slate-800 py-5 px-[25px] rounded-xl mb-[15px] flex flex-col sm:flex-row text-slate-50 text-[1.1rem] overflow-hidden">
                         <span class="text-slate-400 w-[140px] font-semibold shrink-0">Correo:</span>
-                        <a href="mailto:josemedibar@gmail.com?subject=Oferta%20de%20empleo..."
+                        <a href="mailto:josemedibar@gmail.com"
                             class="text-slate-50 no-underline transition-colors duration-300 hover:text-sky-400 break-all">josemedibar@gmail.com</a>
                     </div>
                     <div class="bg-slate-800 py-5 px-[25px] rounded-xl mb-[15px] flex text-slate-50 text-[1.1rem]">
@@ -210,20 +172,13 @@
                     </div>
                 </div>
 
-                <!-- Imagen secundaria -->
                 <div class="flex-none w-full flex justify-center md:w-[400px]">
                     <img src="img/img2.png" alt="Jose Antonio Medina"
                         class="w-full max-w-[300px] md:max-w-[400px] rounded-[20px] shadow-[0_15px_30px_rgba(0,0,0,0.4)]">
                 </div>
             </div>
 
-            <!-- GRID de Habilidades: 
-                 Móviles: 1 columna (grid-cols-1)
-                 Tablets: 2 columnas (md:grid-cols-2)
-                 Escritorio: 4 columnas (lg:grid-cols-4)
-            -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <!-- Tarjeta individual de habilidad -->
                 <div
                     class="bg-slate-800 p-[30px] rounded-[15px] border border-sky-400/20 text-center transition-all duration-300 hover:-translate-y-[5px] hover:border-sky-400">
                     <h3 class="text-[2rem] text-slate-50 mb-[5px] font-bold">75%</h3>
@@ -247,101 +202,17 @@
             </div>
         </section>
 
-        <!-- SECCIÓN PROYECTOS -->
         <section class="max-w-[1200px] mx-auto px-5 py-20 text-center min-h-screen flex flex-col justify-center w-full"
             id="proyectos">
             <h2 class="text-[2.5rem] mb-10 text-sky-400 text-center font-bold oculto">Proyectos Destacados</h2>
 
-            <!-- GRID AVANZADO: 
-                 grid-cols-[repeat(auto-fit,minmax(320px,1fr))]: Esto crea un diseño que se adapta automáticamente.
-                 Si caben columnas de 320px, las pone juntas. Si la pantalla es más pequeña, bajan de fila solas (sin necesidad de Media Queries).
-            -->
-            <div class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-10 mt-5 w-full">
-
-                <!-- ÁREA DE ETIQUETAS Y DATOS (LOADING STATE / SKELETON):
-                     Esta área simula la carga de datos. Cuando tengas un backend, este código será el que
-                     se muestre primero, y JavaScript lo reemplazará por los proyectos reales una vez cargados.
-                     Se ha adaptado el diseño que pasaste al tema oscuro utilizando bg-slate-700 para los
-                     bloques que imitan texto e imágenes, con una animación de pulso para mayor realismo.
-                -->
-
-                <!-- Marcador de posición Skeleton Proyecto 1 (Imita Proyecto 1 real) -->
-                <div
-                    class="bg-slate-800 rounded-[15px] overflow-hidden shadow-[0_6px_15px_rgba(0,0,0,0.3)] text-left flex flex-col delay-100">
-                    <!-- Contenedor de Imagen Skeleton (Basado en el rectángulo grande de tu imagen) -->
-                    <div class="w-full h-[200px] bg-slate-700 animate-pulse border-b-[3px] border-slate-700/50"></div>
-
-                    <!-- Título Skeleton (Dos bloques de texto cortos basados en tu imagen) -->
-                    <div class="h-6 bg-slate-700 animate-pulse rounded mx-5 mt-5 mb-[10px] w-3/4"></div>
-
-                    <!-- Descripción Skeleton (Un bloque largo basado en tu imagen)
-                         grow: Fuerza a que este párrafo empuje al botón hacia abajo para alinearlos en el grid
-                    -->
-                    <div class="h-4 bg-slate-700 animate-pulse rounded mx-5 mb-2 w-1/2"></div>
-                    <div class="h-4 bg-slate-700 animate-pulse rounded mx-5 mb-5 w-full grow"></div>
-
-                    <!-- Botón Skeleton (Un bloque corto redondeado basado en tu imagen) -->
-                    <div class="h-10 bg-slate-700 animate-pulse rounded mx-5 mb-5 w-1/3 self-start"></div>
-                </div>
-
-                <!-- Marcador de posición Skeleton Proyecto 2 (Imita Proyecto 2 real) -->
-                <div
-                    class="bg-slate-800 rounded-[15px] overflow-hidden shadow-[0_6px_15px_rgba(0,0,0,0.3)] text-left flex flex-col delay-200">
-                    <div class="w-full h-[200px] bg-slate-700 animate-pulse border-b-[3px] border-slate-700/50"></div>
-                    <h3 class="text-slate-50 mx-5 mt-5 mb-[10px] text-[1.4rem] font-bold">Sistema de Tienda online de
-                        iPhone</h3>
-                    <p class="text-slate-400 mx-5 mb-5 grow">Desarrollo Con VScode</p>
-                    <p class="text-slate-400 mx-5 mb-5 grow">Una solución integral para la venta de iPhones en línea.
-                    </p>
-                    <a href="https://jamb2000.github.io/Proyecto-iPhone-Cliente/"
-                        class="mx-5 mb-5 self-start inline-block bg-transparent text-sky-400 border-2 border-sky-400 px-5 py-2 rounded-md no-underline font-semibold text-[0.9rem] transition-all duration-300 hover:bg-sky-400 hover:text-slate-900 hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(56,189,248,0.3)]">Ver
-                        Proyecto</a>
-                </div>
-
-                <!-- Marcador de posición Skeleton Proyecto 3 (Imita Proyecto 3 real) -->
-                <div
-                    class="bg-slate-800 rounded-[15px] overflow-hidden shadow-[0_6px_15px_rgba(0,0,0,0.3)] text-left flex flex-col delay-300">
-                    <div class="w-full h-[200px] bg-slate-700 animate-pulse border-b-[3px] border-slate-700/50"></div>
-                    <div class="h-6 bg-slate-700 animate-pulse rounded mx-5 mt-5 mb-[10px] w-2/3"></div>
-                    <div class="h-4 bg-slate-700 animate-pulse rounded mx-5 mb-2 w-1/2"></div>
-                    <div class="h-4 bg-slate-700 animate-pulse rounded mx-5 mb-5 w-full grow"></div>
-                    <div class="h-10 bg-slate-700 animate-pulse rounded mx-5 mb-5 w-1/3 self-start"></div>
-                </div>
-
-                <!-- Marcador de posición Skeleton Proyecto 4 (Imita Proyecto 4 real) -->
-                <div
-                    class="bg-slate-800 rounded-[15px] overflow-hidden shadow-[0_6px_15px_rgba(0,0,0,0.3)] text-left flex flex-col delay-400">
-                    <div class="w-full h-[200px] bg-slate-700 animate-pulse border-b-[3px] border-slate-700/50"></div>
-                    <div class="h-6 bg-slate-700 animate-pulse rounded mx-5 mt-5 mb-[10px] w-1/2"></div>
-                    <div class="h-4 bg-slate-700 animate-pulse rounded mx-5 mb-2 w-1/2"></div>
-                    <div class="h-4 bg-slate-700 animate-pulse rounded mx-5 mb-5 w-full grow"></div>
-                    <div class="h-10 bg-slate-700 animate-pulse rounded mx-5 mb-5 w-1/3 self-start"></div>
-                </div>
-
-                <!-- Tarjetas de Proyectos Reales (Actualmente ocultas por defecto por 'ocultomostrar'):
-                     Estas tarjetas deben estar comentadas o vacías hasta que JavaScript las llene con datos reales
-                     y oculte las tarjetas Skeleton de arriba.
-                -->
-                <!-- Proyecto 1 real (Comentado para demo) -->
-                <!-- <div
-                    class="bg-slate-800 rounded-[15px] overflow-hidden shadow-[0_6px_15px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-[10px] hover:shadow-[0_15px_30px_rgba(0,0,0,0.5)] text-left flex flex-col ocultomostrar delay-100">
-                    <img src="img/proyecto1.jpg" alt="Proyecto 1"
-                        class="w-full h-[200px] object-cover border-b-[3px] border-sky-400">
-                    <h3 class="text-slate-50 mx-5 mt-5 mb-[10px] text-[1.4rem] font-bold">Sistema de Tienda online de
-                        iPhone</h3>
-                    <p class="text-slate-400 mx-5 mb-5 grow">Desarrollo en ASP.NET Core.</p>
-                    <a href="https://jamb2000.github.io/Proyecto-iPhone-Cliente/"
-                        class="mx-5 mb-5 self-start inline-block bg-transparent text-sky-400 border-2 border-sky-400 px-5 py-2 rounded-md no-underline font-semibold text-[0.9rem] transition-all duration-300 hover:bg-sky-400 hover:text-slate-900 hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(56,189,248,0.3)]">Ver
-                        Detalles</a>
-                </div> -->
-
-                <!-- (Añade el resto de tarjetas reales de la misma forma para cuando tengas datos) -->
+            <div id="contenedor-proyectos"
+                class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-10 mt-5 w-full">
             </div>
         </section>
 
     </main>
 
-    <!-- Archivo JS para manejar el IntersectionObserver (que activa las clases .oculto y .mostrar) -->
     <script src="js/script.js"></script>
 </body>
 
