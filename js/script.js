@@ -105,8 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <h3 class="text-slate-50 mx-5 mt-5 mb-[10px] text-[1.4rem] font-bold">${proyecto.titulo}</h3>
                     <p class="text-slate-400 mx-5 mb-2">${proyecto.herramienta}</p>
-                    <p class="text-slate-400 mx-5 mb-5 grow">${proyecto.desc}</p>
-                    <a href="${proyecto.link}" class="mx-5 mb-5 self-center inline-block bg-transparent text-sky-400 border-2 border-sky-400 px-5 py-2 rounded-md no-underline font-semibold text-[0.9rem] transition-all duration-300 hover:bg-sky-400 hover:text-slate-900 hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(56,189,248,0.3)]">
+                    <p class="text-slate-400 mx-5 mb-5 grow">${proyecto.desc}</p>                    
+                    <a href="${proyecto.link}" target="_blank" rel="noopener noreferrer" class="mx-5 mb-5 self-center inline-block bg-transparent text-sky-400 border-2 border-sky-400 px-5 py-2 rounded-md no-underline font-semibold text-[0.9rem] transition-all duration-300 hover:bg-sky-400 hover:text-slate-900 hover:-translate-y-[2px] hover:shadow-[0_4px_10px_rgba(56,189,248,0.3)]">
                         Ver Proyecto
                     </a>
                 </div>
@@ -145,3 +145,35 @@ document.querySelectorAll('a').forEach(enlace => {
         }
     });
 });
+
+// =======================================================
+// LÓGICA DEL FORMULARIO DE CONTACTO (Simulación de envío)
+// =======================================================
+
+//const formulario = document.getElementById('formulario-contacto');
+
+if (formulario) {
+    formulario.addEventListener('submit', function(e) {
+        // Evitamos que la página se actualice al darle "Enviar"
+        e.preventDefault(); 
+        
+        // Agarramos el botón para hacerle el efecto de éxito
+        const boton = this.querySelector('button[type="submit"]');
+        const textoOriginal = boton.innerText;
+        
+        // Cambiamos el estilo a verde de éxito
+        boton.innerText = '¡Mensaje Enviado!';
+        boton.classList.add('bg-green-500', 'text-white', 'hover:bg-green-600');
+        boton.classList.remove('bg-sky-400', 'text-slate-900', 'hover:bg-sky-500');
+        
+        // Limpiamos todo lo que el usuario escribió
+        this.reset();
+        
+        // A los 3 segundos (3000ms), regresamos el botón a su estado normal azul
+        setTimeout(() => {
+            boton.innerText = textoOriginal;
+            boton.classList.remove('bg-green-500', 'text-white', 'hover:bg-green-600');
+            boton.classList.add('bg-sky-400', 'text-slate-900', 'hover:bg-sky-500');
+        }, 3000);
+    });
+}

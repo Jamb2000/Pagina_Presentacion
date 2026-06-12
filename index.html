@@ -157,15 +157,12 @@
                     </div>
                     <div
                         class="bg-slate-800 py-5 px-[25px] rounded-xl mb-[15px] flex flex-col sm:flex-row text-slate-50 text-[1.1rem] overflow-hidden">
-                        <span class="text-slate-400 w-[140px] font-semibold shrink-0">Correo:</span>
-                        <a href="mailto:josemedibar@gmail.com"
-                            class="text-slate-50 no-underline transition-colors duration-300 hover:text-sky-400 break-all">josemedibar@gmail.com</a>
+                        <span
+                            class="text-slate-400 w-[140px] font-semibold shrink-0">Correo:</span>josemedibar@gmail.com
                     </div>
                     <div class="bg-slate-800 py-5 px-[25px] rounded-xl mb-[15px] flex text-slate-50 text-[1.1rem]">
-                        <span class="text-slate-400 w-[140px] font-semibold shrink-0">Teléfono:</span>
-                        <a href="https://wa.me/51991604801" target="_blank"
-                            class="text-slate-50 no-underline transition-colors duration-300 hover:text-sky-400">+51 991
-                            604 801</a>
+                        <span class="text-slate-400 w-[140px] font-semibold shrink-0">Teléfono:</span>+51 991
+                        604 801
                     </div>
                     <div class="bg-slate-800 py-5 px-[25px] rounded-xl mb-[15px] flex text-slate-50 text-[1.1rem]">
                         <span class="text-slate-400 w-[140px] font-semibold shrink-0">Disponibilidad:</span> Disponible
@@ -212,6 +209,139 @@
         </section>
 
     </main>
+
+
+    <!-- =========================================
+         FOOTER Y SECCIÓN DE CONTACTO
+         ========================================= -->
+    <!-- id="contacto" permite que los enlaces del menú te lleven directo aquí -->
+    <footer class="bg-slate-900 border-t border-sky-400/20 pt-20 pb-10 mt-10 relative overflow-hidden" id="contacto">
+
+        <!-- Resplandor azul decorativo en el fondo -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(56,189,248,0.1)_0%,rgba(15,23,42,0)_70%)] pointer-events-none">
+        </div>
+
+        <div class="max-w-[1200px] mx-auto px-5 relative z-10">
+            <!-- Grid de 2 columnas para PC, 1 columna para celulares -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-16">
+
+                <!-- COLUMNA IZQUIERDA: Formulario funcional con Formspree -->
+                <div class="oculto">
+                    <h2 class="text-3xl font-bold text-slate-50 mb-2">Hablemos de tu proyecto</h2>
+                    <p class="text-slate-400 mb-8">Envíame un correo directo y te responderé lo antes posible.</p>
+
+                    <!-- Formulario conectado a Formspree usando el método POST -->
+                    <form action="https://formspree.io/f/mpwrqzqn" method="POST" id="formulario-contacto"
+                        class="flex flex-col gap-5">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <!-- Atributo name="nombre" es obligatorio para que Formspree sepa qué dato es este -->
+                            <input type="text" name="nombre" placeholder="Tu Nombre" required
+                                class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-50 focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-colors">
+
+                            <!-- Atributo name="correo" es obligatorio -->
+                            <input type="email" name="correo" placeholder="Tu Correo" required
+                                class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-50 focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-colors">
+                        </div>
+
+                        <!-- Atributo name="mensaje" es obligatorio. resize-none bloquea el cambio de tamaño manual -->
+                        <textarea name="mensaje" placeholder="Cuéntame sobre la página web que necesitas..." rows="4"
+                            required
+                            class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-slate-50 focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-colors resize-none"></textarea>
+
+                        <button type="submit"
+                            class="self-start bg-sky-400 text-slate-900 font-bold px-8 py-3 rounded-lg transition-all duration-300 hover:bg-sky-500 hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(56,189,248,0.4)]">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+
+                <!-- COLUMNA DERECHA: Info Directa y Botones -->
+                <div class="flex flex-col justify-center oculto delay-200">
+                    <h3 class="text-2xl font-bold text-slate-50 mb-6">Contacto Directo</h3>
+
+                    <!-- Ubicación -->
+                    <div class="flex items-center gap-4 text-slate-400 mb-8">
+                        <svg class="w-6 h-6 text-sky-400 shrink-0" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span>Cusco, Peru</span>
+                    </div>
+
+                    <!-- Botones de Acción Rápida -->
+                    <div class="flex flex-col gap-4">
+
+                        <!-- Botón para abrir aplicación de correo con asunto y mensaje listos -->
+                        <a href="mailto:josemedibar@gmail.com?subject=Inter%C3%A9s%20en%20contrataci%C3%B3n%20para%20proyecto%20web&body=Hola%20Jose%20Antonio%2C%0A%0AHe%20revisado%20tu%20portafolio%20y%20estoy%20muy%20interesado/a%20en%20contratar%20tus%20servicios%20como%20creador%20de%20p%C3%A1ginas%20web.%0A%0AMe%20gustar%C3%ADa%20que%20conversemos%20para%20darte%20m%C3%A1s%20detalles%20sobre%20lo%20que%20necesito.%0A%0AQuedo%20a%20la%20espera%20de%20tu%20respuesta.%0A%0ASaludos."
+                            class="inline-flex items-center justify-center gap-3 bg-slate-800 text-sky-400 border border-sky-400/50 font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:bg-sky-400 hover:text-slate-900 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(56,189,248,0.3)] w-full lg:w-fit">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            Enviar Correo Rápido
+                        </a>
+
+                        <!-- Botón de WhatsApp abre directo al chat con mensaje listo. target="_blank" abre en pestaña nueva -->
+                        <a href="https://wa.me/51991604801?text=Hola%20Jose%20Antonio%2C%20estoy%20interesado%20en%20tus%20servicios%20como%20creador%20de%20p%C3%A1ginas%20web.%20Me%20gustar%C3%ADa%20agendar%20una%20reuni%C3%B3n%20para%20hablar%20sobre%20un%20proyecto."
+                            target="_blank"
+                            class="inline-flex items-center justify-center gap-3 bg-[#25D366] text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:bg-[#20bd5a] hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(37,211,102,0.3)] w-full lg:w-fit">
+                            <svg class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z">
+                                </path>
+                                <path
+                                    d="M12.031 2c5.514 0 10 4.486 10 10s-4.486 10-10 10c-1.795 0-3.483-.473-4.966-1.309l-5.065 1.33 1.353-4.938c-.902-1.523-1.378-3.291-1.378-5.083 0-5.514 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12 0 2.051.527 3.965 1.446 5.615l-1.896 6.923 7.085-1.859c1.613.882 3.447 1.371 5.365 1.371 6.627 0 12-5.373 12-12s-5.373-12-12-12z">
+                                </path>
+                            </svg>
+                            Contactar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LÍNEA SEPARADORA -->
+            <div class="h-px w-full bg-slate-800 mb-8"></div>
+
+            <!-- ZONA INFERIOR: Copyright y Redes Sociales -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-500 text-sm text-center md:text-left">
+                    &copy; 2026 Jose Antonio Medina. Todos los derechos reservados.
+                </p>
+
+                <div class="flex gap-4">
+                    <a href="#" class="text-slate-500 hover:text-sky-400 transition-colors" title="LinkedIn">
+                        <span class="sr-only">LinkedIn</span>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-slate-500 hover:text-sky-400 transition-colors" title="GitHub">
+                        <span class="sr-only">GitHub</span>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://twitch.tv/jamb_1" target="_blank"
+                        class="text-slate-500 hover:text-sky-400 transition-colors" title="Twitch">
+                        <span class="sr-only">Twitch</span>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M2.149 0l-1.612 4.119v16.836h5.731v3.045h3.224l3.045-3.045h4.657l6.806-6.806v-14.149h-21.851zm19.344 13.074l-4.657 4.657h-4.657l-3.045 3.045v-3.045h-4.836v-15.045h17.195v10.388zm-3.939-5.911v4.836h-2.149v-4.836h2.149zm-5.015 0v4.836h-2.149v-4.836h2.149z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="js/script.js"></script>
 </body>
